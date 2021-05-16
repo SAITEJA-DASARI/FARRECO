@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "686087235409",
+    "project_id": "farreco-7626c",
+    "storage_bucket": "farreco-7626c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686087235409:android:6843946729a4f6c3441570",
+        "android_client_info": {
+          "package_name": "com.example.farreco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686087235409-hg999h3upkdb699rg17d29rf22s8e400.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjRog1ZOgLij-cVUD2ErnotmJsmSA4LEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "686087235409-hg999h3upkdb699rg17d29rf22s8e400.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "686087235409-0a0r49h7htjg1oemf9aael9d0d2cdaek.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.farreco"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

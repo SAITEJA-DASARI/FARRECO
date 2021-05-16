@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>686087235409-0a0r49h7htjg1oemf9aael9d0d2cdaek.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.686087235409-0a0r49h7htjg1oemf9aael9d0d2cdaek</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDF0QWsrga_L19yKkAeOjqwsbKu5Rg3rz8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>686087235409</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.farreco</string>
+	<key>PROJECT_ID</key>
+	<string>farreco-7626c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>farreco-7626c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:686087235409:ios:f36d252429817619441570</string>
+</dict>
+</plist>
