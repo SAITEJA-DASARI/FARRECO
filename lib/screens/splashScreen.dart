@@ -6,6 +6,7 @@ import 'package:farreco/nav.dart';
 import 'package:farreco/services/authService.dart';
 import 'package:farreco/widgets/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:farreco/translation/translationConstants.dart';
 
 import 'getStarted.dart';
 
@@ -61,7 +62,8 @@ class _SplashScreenState extends State<SplashScreen> {
                         padding: EdgeInsets.only(top: 10.0),
                       ),
                       Text(
-                        "FARRECO",
+                        getTranslated(context, "splashScreenAppTitleText"),
+                        //"FARRECO",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -83,7 +85,8 @@ class _SplashScreenState extends State<SplashScreen> {
                       padding: EdgeInsets.only(top: 20.0),
                     ),
                     Text(
-                      "Farmers Guide",
+                      getTranslated(context, "splashScreenAppSubtitleText"),
+                      // "Farmers Guide",
                       softWrap: true,
                       textAlign: TextAlign.center,
                       style: TextStyle(

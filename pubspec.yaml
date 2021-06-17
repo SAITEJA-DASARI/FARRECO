@@ -18,22 +18,51 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.9.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_localizations: 
+    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.1
+  cloud_firestore: ^2.1.0
+  firebase: ^9.0.1
+  firebase_auth: ^1.1.4
+  auto_size_text: ^2.0.2
+  
+  international_phone_input: ^1.0.4
+  custom_navigator: ^0.3.0
+  flutter_staggered_grid_view: ^0.4.0
+  charts_flutter: ^0.10.0
+  intl: ^0.17.0
+  syncfusion_flutter_gauges: ^19.1.64
+  http: ^0.13.3
+  http_parser: ^4.0.0
+  weather: ^2.0.1
+  carousel_slider: ^3.0.0
+  location: ^4.1.1
+  weather_icons: ^2.0.2
+  shared_preferences: ^0.5.6+2
+  # flutter_launcher_icons: ^0.9.0
+  group_button: ^2.2.2
+  
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   integration_test:
     sdk: flutter
+
+# flutter_icons:
+#   image_path_android: "assets/images/farrecoLogo.png"
+#   image_path_ios: "assets/images/farreco.png"
+#   android: true
+#   ios: false
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -44,12 +73,13 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+  generate: true
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - lib/translation/en_translation.json
+    - lib/translation/te_translation.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

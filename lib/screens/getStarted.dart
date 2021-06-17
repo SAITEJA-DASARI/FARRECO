@@ -1,6 +1,9 @@
 //getting started page this is shown for users to sign in or sign up page
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:farreco/translation/translationConstants.dart';
+import 'package:farreco/translation/language.dart';
+import 'package:farreco/app.dart';
 
 class FirstView extends StatelessWidget {
   final primaryColor = const Color(0xFF1B5E20);
@@ -11,24 +14,32 @@ class FirstView extends StatelessWidget {
     final _width = MediaQuery.of(context).size.width;
     final _height = MediaQuery.of(context).size.height;
 
+    return buildScaffold(_width, _height, context);
+  }
+
+  Scaffold buildScaffold(double _width, double _height, BuildContext context) {
     return Scaffold(
       body: Container(
         width: _width,
         height: _height,
         color: primaryColor,
-        child: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: <Widget>[
                 SizedBox(height: _height * 0.10),
+                buildLanguageDropDown(context),
+                SizedBox(height: _height * 0.10),
                 Text(
-                  "Welcome",
+                  getTranslated(context, "welcomePageTitle"),
+                  // "Welcome",
                   style: TextStyle(fontSize: 44, color: Colors.white),
                 ),
                 SizedBox(height: _height * 0.10),
                 AutoSizeText(
-                  "Let's start monitoring soil",
+                  getTranslated(context, "welcomePageSubTitle"),
+                  // "Let's start monitoring soil",
                   maxLines: 2,
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -47,7 +58,8 @@ class FirstView extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         top: 10.0, bottom: 10.0, left: 30.0, right: 30.0),
                     child: Text(
-                      "Get Started",
+                      getTranslated(context, "welcomePageGetStartedText"),
+                      //Get Started
                       style: TextStyle(
                         color: primaryColor,
                         fontSize: 28,
@@ -63,7 +75,8 @@ class FirstView extends StatelessWidget {
                 SizedBox(height: _height * 0.05),
                 TextButton(
                   child: Text(
-                    "Sign In",
+                    getTranslated(context, "welcomePageSignInText"),
+                    // "Sign In",
                     style: TextStyle(color: Colors.white, fontSize: 25),
                   ),
                   onPressed: () {
@@ -76,5 +89,49 @@ class FirstView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Padding buildLanguageDropDown(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: DropdownButton(
+        onChanged: (Language language) {
+          _changeLanguge(context, language);
+        },
+        underline: SizedBox(),
+        hint: Padding(
+          padding: EdgeInsets.only(bottom: 5),
+          child: Text(
+            getTranslated(context, "welcomePageSelectLanguageText"),
+            // "Select Language",
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Times New Roman',
+              fontSize: 20,
+            ),
+          ),
+        ),
+        items: Language.languageList()
+            .map<DropdownMenuItem<Language>>((lang) => DropdownMenuItem(
+                  value: lang,
+                  child: AutoSizeText(
+                    lang.name,
+                    style: TextStyle(
+                        color: primaryColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ))
+            .toList(),
+      ),
+    );
+  }
+
+  void _changeLanguge(BuildContext context, Language language) async {
+    Locale _temp = await setLocale(language.languageCode);
+
+    App.setLocale(context, _temp);
+
+    print(language.name);
   }
 }

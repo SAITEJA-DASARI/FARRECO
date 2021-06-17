@@ -4,6 +4,7 @@ import 'package:farreco/services/authService.dart';
 import 'package:farreco/widgets/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:farreco/translation/translationConstants.dart';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:international_phone_input/international_phone_input.dart';
@@ -95,27 +96,30 @@ class _SignUpViewState extends State<SignUpView> {
                 await auth.createUserWithPhone(phone, context, _navRoute);
             if (phone == "" || result == "error") {
               setState(() {
-                _error = "Your phone number could not be validated";
+                _error = getTranslated(context,
+                    "signUpPagePhoneNotValidatedText"); //"Your phone number could not be validated";
               });
             }
           } else {
             setState(() {
-              _error = "Requested user not found. Please sign up to continue..";
+              _error = getTranslated(context,
+                  "signInPageUserNotFoundText"); //"Requested user not found. Please sign up to continue..";
             });
           }
         } else {
           //for signup
           if (await auth.isExistingUser(context, phone) == "existing") {
             setState(() {
-              _error =
-                  "This phone number is already in use. please sign in to continue";
+              _error = getTranslated(context,
+                  "signUpPageUserExistingText"); //"This phone number is already in use. please sign in to continue";
             });
           } else {
             var result = await auth.createUserWithPhone(
                 phone, context, _userRegistrationRoute);
             if (phone == "" || result == "error") {
               setState(() {
-                _error = "Your phone number could not be validated";
+                _error = getTranslated(context,
+                    "signUpPagePhoneNotValidatedText"); //"Your phone number could not be validated";
               });
             }
           }
@@ -216,9 +220,11 @@ class _SignUpViewState extends State<SignUpView> {
   AutoSizeText buildHeaderText() {
     String _headerText;
     if (authFormType == AuthFormType.signUp) {
-      _headerText = "Create New Account";
+      _headerText = getTranslated(context, "signUpPageCreateAccountText");
+      // _headerText = "Create New Account";
     } else {
-      _headerText = "Sign In";
+      _headerText = getTranslated(context, "signInPageSignInButtonText");
+      // _headerText = "Sign In";
     }
     return AutoSizeText(
       _headerText,
@@ -246,7 +252,8 @@ class _SignUpViewState extends State<SignUpView> {
     //phone number
     textFields.add(
       InternationalPhoneInput(
-          decoration: buildSignUpInputDecoration("Enter Phone Number"),
+          decoration: buildSignUpInputDecoration(
+              getTranslated(context, "signUpPagePhoneNumberPlaceHolderText")),
           onPhoneNumberChange: onPhoneNumberChange,
           initialPhoneNumber: phone,
           initialSelection: '+91',
@@ -276,13 +283,17 @@ class _SignUpViewState extends State<SignUpView> {
     String _switchButtonText, _newFormState, _submitButtonText;
 
     if (authFormType == AuthFormType.signIn) {
-      _switchButtonText = "Create New Account";
+      _switchButtonText = getTranslated(
+          context, "signUpPageCreateAccountText"); //"Create New Account"
       _newFormState = "signUp";
-      _submitButtonText = "Sign In";
+      _submitButtonText =
+          getTranslated(context, "signInPageSignInButtonText"); //"Sign In";
     } else {
-      _switchButtonText = "Have an Account? Sign In";
+      _switchButtonText = getTranslated(
+          context, "signUpPageSignInButtonText"); //"Have an Account? Sign In";
       _newFormState = "signIn";
-      _submitButtonText = "Continue";
+      _submitButtonText =
+          getTranslated(context, "signUpPageSignUpButtonText"); //"Continue";
     }
 
     return [

@@ -7,6 +7,8 @@ import 'package:farreco/models/user.dart';
 import 'package:farreco/widgets/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:farreco/translation/translationConstants.dart';
+import 'package:farreco/models/utils.dart';
 
 class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -38,6 +40,29 @@ class AuthService {
     print(
         "\n \n \n authservice phone number is  ${_firebaseAuth.currentUser.phoneNumber} \n \n");
     return _firebaseAuth.currentUser.phoneNumber;
+  }
+
+//get soil parameters
+  getSoilParameters(BuildContext context, String uid) async {
+    return await Provider.of(context)
+        .db
+        .collection("users")
+        .doc(uid)
+        .collection("soil parameters")
+        .orderBy('createdTime')
+        .get();
+  }
+
+  //method to get current soil parameters
+  getCurrentSoilParameteres(BuildContext context, String uid) async {
+    return await Provider.of(context)
+        .db
+        .collection("users")
+        .doc(uid)
+        .collection("soil parameters")
+        .orderBy("createdTime", descending: true)
+        .limit(1)
+        .get();
   }
 
   // Email & Password Sign Up
@@ -105,7 +130,8 @@ class AuthService {
             context: context,
             barrierDismissible: false,
             builder: (context) => AlertDialog(
-              title: Text("Enter Verification Code sent to your phone"),
+              title: Text(getTranslated(context,
+                  "otpVerificationDialogueText")), //"Enter Verification Code sent to your phone"
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[TextField(controller: _codeController)],
@@ -113,7 +139,9 @@ class AuthService {
               actions: <Widget>[
                 ElevatedButton(
                   child: Text(
-                    "submit",
+                    getTranslated(
+                        context, "otpVerificationDialogueSubmitButtonText"),
+                    // "submit",
                     style: TextStyle(color: primaryColor),
                   ),
                   style: ButtonStyle(
@@ -163,11 +191,12 @@ class AuthService {
       String _mandal,
       String _district,
       String _pincode,
-      double _landArea) async {
+      double _landArea,
+      FarmingType farmingType) async {
     final user = await Provider.of(context).auth.getCurrentUser();
 
     Users user1 = Users(_name, _phone, _village, _mandal, _district, _pincode,
-        _landArea, user.uid);
+        _landArea, user.uid, farmingType);
     return await Provider.of(context)
         .db
         .collection("users")

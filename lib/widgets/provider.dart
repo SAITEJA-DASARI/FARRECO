@@ -1,4 +1,5 @@
 //creating a provider class to provide single auth and db instance to entire application
+import 'package:farreco/screens/signUp.dart';
 import 'package:farreco/services/authService.dart';
 import 'package:flutter/material.dart';
 

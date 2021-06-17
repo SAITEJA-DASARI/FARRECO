@@ -39,3 +39,9 @@ const ListTileSubTitleTextStyle = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 20,
     color: Colors.black);
+
+const gridViewTitleTextStyle = TextStyle(
+    fontFamily: 'arial',
+    fontWeight: FontWeight.w600,
+    fontSize: 20,
+    color: Colors.white);
